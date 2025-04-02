@@ -1,0 +1,212 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|e:\\\u8077\u8A13\\\u5C08\u984C\\restaurant\\restaurant\\restaurant\\views\\orders\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\orders\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|e:\\\u8077\u8A13\\\u5C08\u984C\\restaurant\\restaurant\\restaurant\\views\\orders\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\orders\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|e:\\\u8077\u8A13\\\u5C08\u984C\\restaurant\\restaurant\\restaurant\\views\\orders\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\orders\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|e:\\\u8077\u8A13\\\u5C08\u984C\\restaurant\\restaurant\\restaurant\\views\\orders\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\orders\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|e:\\\u8077\u8A13\\\u5C08\u984C\\restaurant\\restaurant\\restaurant\\views\\orders\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\orders\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|e:\\\u8077\u8A13\\\u5C08\u984C\\restaurant\\restaurant\\restaurant\\views\\tablelist\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\tablelist\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|e:\\\u8077\u8A13\\\u5C08\u984C\\restaurant\\restaurant\\restaurant\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|e:\\\u8077\u8A13\\\u5C08\u984C\\restaurant\\restaurant\\restaurant\\viewcomponents\\vcgetorderdetailbyorderid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\viewcomponents\\vcgetorderdetailbyorderid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|e:\\\u8077\u8A13\\\u5C08\u984C\\restaurant\\restaurant\\restaurant\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|e:\\\u8077\u8A13\\\u5C08\u984C\\restaurant\\restaurant\\restaurant\\controllers\\loginusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\controllers\\loginusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|e:\\\u8077\u8A13\\\u5C08\u984C\\restaurant\\restaurant\\restaurant\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8565CBD2-D6B9-4EC0-BA40-66370C888BDB}|Restaurant\\Restaurant.csproj|solutionrelative:restaurant\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 192,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\Orders\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Orders\\Edit.cshtml",
+              "ToolTip": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\Orders\\Edit.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Orders\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-24T03:35:25.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\Orders\\Details.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Orders\\Details.cshtml",
+              "ToolTip": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\Orders\\Details.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Orders\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-24T03:35:24.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\Orders\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Orders\\Delete.cshtml",
+              "ToolTip": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\Orders\\Delete.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Orders\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-24T03:35:20.404Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\Orders\\Create.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Orders\\Create.cshtml",
+              "ToolTip": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\Orders\\Create.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Orders\\Create.cshtml",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAGQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-24T03:35:18.238Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-24T03:34:17.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "VCGetOrderDetailByOrderID.cs",
+              "DocumentMoniker": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\ViewComponents\\VCGetOrderDetailByOrderID.cs",
+              "RelativeDocumentMoniker": "Restaurant\\ViewComponents\\VCGetOrderDetailByOrderID.cs",
+              "ToolTip": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\ViewComponents\\VCGetOrderDetailByOrderID.cs",
+              "RelativeToolTip": "Restaurant\\ViewComponents\\VCGetOrderDetailByOrderID.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T03:29:06.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LoginUserController.cs",
+              "DocumentMoniker": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Controllers\\LoginUserController.cs",
+              "RelativeDocumentMoniker": "Restaurant\\Controllers\\LoginUserController.cs",
+              "ToolTip": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Controllers\\LoginUserController.cs",
+              "RelativeToolTip": "Restaurant\\Controllers\\LoginUserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T01:17:41.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Cart.cshtml",
+              "DocumentMoniker": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\TableList\\Cart.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\TableList\\Cart.cshtml",
+              "ToolTip": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\TableList\\Cart.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\TableList\\Cart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-24T01:04:16.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\Orders\\Index.cshtml",
+              "RelativeDocumentMoniker": "Restaurant\\Views\\Orders\\Index.cshtml",
+              "ToolTip": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Views\\Orders\\Index.cshtml",
+              "RelativeToolTip": "Restaurant\\Views\\Orders\\Index.cshtml",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAAIMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-24T01:03:50.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\appsettings.json",
+              "RelativeDocumentMoniker": "Restaurant\\appsettings.json",
+              "ToolTip": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\appsettings.json",
+              "RelativeToolTip": "Restaurant\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-24T00:55:54.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "Restaurant\\Controllers\\OrdersController.cs",
+              "ToolTip": "E:\\\u8077\u8A13\\\u5C08\u984C\\Restaurant\\Restaurant\\Restaurant\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "Restaurant\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAA3wI8AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T13:06:08.826Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
