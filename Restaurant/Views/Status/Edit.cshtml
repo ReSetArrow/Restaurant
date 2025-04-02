@@ -1,0 +1,45 @@
+﻿@model Restaurant.Models.Status
+
+@{
+    ViewData["Title"] = "編輯訂單狀態名稱";
+}
+
+<div class="text-end">
+    <a asp-action="Index" class="btn btn-primary">
+        <i class="bi bi-house-door-fill"></i> 訂單狀態首頁
+    </a>
+</div>
+<h1 class="text-center">@ViewData["Title"]：@Html.DisplayFor(Model => Model.StatusCode)</h1>
+
+<hr />
+<div class="container ">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <form asp-action="Edit" onsubmit="return confirm('訂單狀態即將變更名稱')">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="StatusCode" />
+                <div class="form-group">
+                    <h2 class="text-center">
+                        <label asp-for="StatusCategory" class="control-label"></label>
+                    </h2>
+                    <div>
+                        <input asp-for="StatusCategory" class="form-control" />
+                        <span asp-validation-for="StatusCategory" class="text-danger"></span>
+                    </div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <input type="submit" value="確認修改" class="btn btn-primary w-100" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

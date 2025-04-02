@@ -1,0 +1,57 @@
+﻿@model Restaurant.Models.Table
+@{
+    ViewData["Title"] = "新增桌位";
+}
+
+<div class="text-end">
+    <a asp-action="Index" class="btn btn-primary">
+        <i class="bi bi-house-door-fill"></i> 桌位首頁
+    </a>
+</div>
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<hr />
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="TableID" class="control-label"></label>
+                    <input asp-for="TableID" class="form-control" />
+                    <span asp-validation-for="TableID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Limit" class="control-label"></label>
+                    <input asp-for="Limit" class="form-control" />
+                    <span asp-validation-for="Limit" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Pricing" class="control-label"></label>
+                    <input asp-for="Pricing" class="form-control" />
+                    <span asp-validation-for="Pricing" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Remark" class="control-label"></label>
+                    <input asp-for="Remark" class="form-control" />
+                    <span asp-validation-for="Remark" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Picture" class="control-label"></label>
+                    <input type="file" asp-for="Picture" class="form-control" />
+                    <span asp-validation-for="Picture" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center mt-4">
+                    <input type="submit" value="確認新增" class="btn btn-primary w-100" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

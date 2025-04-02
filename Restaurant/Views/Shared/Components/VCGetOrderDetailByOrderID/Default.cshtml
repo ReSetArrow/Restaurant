@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Restaurant.Models.OrderDetails>
+
+@{
+    ViewData["Title"] = "View";
+}
+<table class="table">
+   
+    <tbody>
+@foreach (var item in Model) {
+            <tr>
+                <td style="width:100px">
+                    <img src="/images/@Html.DisplayFor(modelItem=>item.Table.Picture)" class="img-thumbnails" width="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Table.Remark)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pricing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubTotal)
+                </td>        
+             </tr>
+}
+
+    </tbody>
+</table>

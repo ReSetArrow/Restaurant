@@ -1,0 +1,51 @@
+﻿@model Restaurant.Models.Payment
+
+@{
+    ViewData["Title"] = "刪除付款方式";
+}
+
+
+<div class="text-end">
+    <a asp-action="Index" class="btn btn-primary">
+        <i class="bi bi-house-door-fill"></i> 付款方式首頁
+    </a>
+</div>
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+
+                <h2 class="text-center">
+                    <div class="alert-danger">@Html.DisplayNameFor(model => model.PaymentCode)</div>
+                    <div>  @Html.DisplayFor(model => model.PaymentCode)</div>
+
+
+                </h2>
+                <hr />
+                <h2 class="text-center">
+                    <div class="alert-danger">@Html.DisplayNameFor(model => model.PaymentType)</div>
+                    <div>@Html.DisplayFor(model => model.PaymentType)</div>
+
+
+                </h2>
+
+                <hr />
+                <img src="~/css/Delete.jpg" class="d-block mx-auto" alt="Warning" />
+
+                <hr />
+                <div class="form-group text-center mt-4">
+                    <form asp-action="Delete" onsubmit="return confirm('刪除後無法復原，你確定(◜◔。◔◝)?');">
+                        <input type="hidden" asp-for="PaymentCode" />
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

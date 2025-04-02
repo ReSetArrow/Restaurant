@@ -1,0 +1,169 @@
+﻿@model IEnumerable<Restaurant.Models.Table>
+
+@{
+    ViewData["Title"] = "Index";
+    var user = Context.Items["UserLogin"] as UserLogin;
+    var userAccount = user?.Account; // 宣告Acccount變數，用於判斷是否有登入
+
+}
+<div class="row">
+    
+   @*  預留未來製作Offcanvas功能 *@
+   <div>
+    <input type="text" id="searchInput" class=" form-control" placeholder="關鍵字搜尋... ..."/>
+    </div>
+</div>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-xl-3 col-md-6 Tables" data-myself-keyword="@item.Remark @item.Pricing @item.TableID">
+            <div class="card">
+                <img src="/images/@(Html.DisplayFor(modelItem => item.TableID)).jpg" class="img-thumbnail" />
+                <div class="card-body">
+                    <h3>@Html.DisplayFor(modelItem => item.TableID)</h3>
+                    <h2>@Html.DisplayFor(modelItem => item.Remark)</h2>
+                    <h4 class="text-danger fw-bold text-end">@Html.DisplayFor(modelItem => item.Pricing)</h4>
+                </div>
+                <div class="card-footer">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success" onclick="addCart('@item.TableID','@item.Remark',@item.Pricing,'@item.Picture')"><i class="bi bi-hand-index-thumb-fill"></i> 加入訂單</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@*  /////////////////////////////////////////////////Toasts///////////////////////////////////////////////// *@
+@* <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> *@
+
+<div class="toast-container position-fixed bottom-0 end-0  p-3">
+    <div id="addCartToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body fs-5"></div>
+            @* <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button> *@
+        </div>
+    </div>
+</div>
+@*  /////////////////////////////////////////////////Toasts///////////////////////////////////////////////// *@
+
+@*  /////////////////////////////////////////////////Badges///////////////////////////////////////////////// *@
+<div id="CartStatus" class="position-fixed top-50 end-0 m-5" style="">
+    <a asp-action="Cart">
+    <i class="bi bi-bag-heart fs-1 "></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            
+            <span class="visually-hidden">unread messages</span>
+        </span>
+    </a>
+</div>
+@*  /////////////////////////////////////////////////Badges///////////////////////////////////////////////// *@
+
+
+@section Scripts {
+    <script>
+        let arrCart=[];
+        let userAccount='@userAccount'; // 從 Razor 頁面傳遞使用者帳號到 JavaScript
+         //為避免上述空陣列將資料全部刪除，如果有陣列資料要先讀取出來
+        if(localStorage.getItem(userAccount+'_cart')){
+            arrCart=JSON.parse( localStorage.getItem(userAccount+'_cart'));
+            shadow1()
+        }
+        /////////////////////////////////////////////////searchInput/////////////////////////////////////////////////
+        $('#searchInput').on('input',function(){
+            let keyword= $(this).val().toLowerCase();
+
+            $('.Tables').each(function(){
+                let tableInfo=$(this).data('myself-keyword').toLowerCase();
+                if(tableInfo.indexOf(keyword)>=0){
+                    $(this).show(200);
+                }
+                else{
+                    $(this).hide(200);
+                }
+            });
+        });
+        /////////////////////////////////////////////////searchInput/////////////////////////////////////////////////
+
+
+        /////////////////////////////////////////////////Cart/////////////////////////////////////////////////
+        function shadow1(){
+            $('#CartStatus').css({
+                'text-shadow':'0 0 4px red'
+            });
+            setTimeout(shadow2,500);
+        }
+
+        function shadow2(){
+            $('#CartStatus').css({
+                'text-shadow':'0 0 4px white'
+            });
+            setTimeout(shadow1,500);
+        }
+        /////////////////////////////////////////////////Cart/////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////Badges/////////////////////////////////////////////////
+        //DOM操作，取陣列長度=商品數量
+        $('#CartStatus span').text(arrCart.length);
+        /////////////////////////////////////////////////Badges/////////////////////////////////////////////////
+
+         /////////////////////////////////////////////////Toasts/////////////////////////////////////////////////
+        //使用Toasts取代alert提示視窗，Toasts包含Scripts及HTML
+        // const toastTrigger = document.getElementById('liveToastBtn')
+        const toastLiveExample = document.getElementById('addCartToast')
+
+        // if (toastTrigger) {
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(addCartToast)
+          // toastTrigger.addEventListener('click', () => {
+          // toastBootstrap.show()
+          //})
+        // }
+        /////////////////////////////////////////////////Toasts/////////////////////////////////////////////////
+
+
+        function addCart(TableID,Remark,Pricing,Picture){
+                        //加入判斷是否在訂單內已經有相同物件
+                        let result= arrCart.find(item=>item.TableID==TableID); //如果沒有找到資料回傳undefined
+                        // console.log(result);
+
+                        //判斷後執行的動作
+                        if(result==undefined){
+
+                            //alert('加入訂單'); 
+                            //Toast取代alert
+                            //toastBootstrap.show()
+                            //在寫成jQuery動態樣式
+                            $('#addCartToast .toast-body').html("【"+Remark+"】已加入訂單<i class='bi bi-balloon-heart'></i>");
+
+                            //將加入訂單的資訊寫入LocalStorage
+                            let newItem={
+                                TableID:TableID,
+                                Remark:Remark,
+                                Pricing:Pricing,
+                                Picture:Picture,
+                                Qty:1
+                            }
+                            arrCart.push(newItem);
+                            console.log(arrCart);
+                            //localStorage為物件,設定=setItem('key',JSON.stringify(arrCart))
+                            localStorage.setItem(userAccount+'_cart',JSON.stringify(arrCart));
+
+                            //有新桌位加入訂單必須修改Badges上方數字
+                            $('#CartStatus span').text(arrCart.length);
+                            shadow1()
+                            //呼叫Toast
+                            toastBootstrap.show()
+                        }
+                        else{
+                            //1.數量+1;2.資料寫入陣列;3.jQuery呼叫;4.showToast
+                            result.Qty+=1;
+                            localStorage.setItem(userAccount+'_cart',JSON.stringify(arrCart));
+                            $('#addCartToast .toast-body').html("【"+Remark+"】已加入訂單<i class='bi bi-balloon-heart'></i>");
+                            toastBootstrap.show()
+                        }
+        }
+
+    </script>
+
+}

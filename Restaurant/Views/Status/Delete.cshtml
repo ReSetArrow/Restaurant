@@ -1,0 +1,50 @@
+﻿@model Restaurant.Models.Status
+
+@{
+    ViewData["Title"] = "刪除訂單狀態";
+}
+
+<div class="text-end">
+    <a asp-action="Index" class="btn btn-primary">
+        <i class="bi bi-house-door-fill"></i> 訂單狀態首頁
+    </a>
+</div>
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+
+                <h2 class="text-center">
+                    <div class="alert-danger">@Html.DisplayNameFor(model => model.StatusCode)</div>
+                    <div>  @Html.DisplayFor(model => model.StatusCode)</div>
+
+
+                </h2>
+                <hr />
+                <h2 class="text-center">
+                    <div class="alert-danger">@Html.DisplayNameFor(model => model.StatusCategory)</div>
+                    <div>@Html.DisplayFor(model => model.StatusCategory)</div>
+
+
+                </h2>
+
+                <hr />
+                <img src="~/css/Delete.jpg" class="d-block mx-auto" alt="Warning" />
+
+                <hr />
+                <div class="form-group text-center mt-4">
+                    <form asp-action="Delete" onsubmit="return confirm('刪除後無法復原，你確定(◜◔。◔◝)?');">
+                        <input type="hidden" asp-for="StatusCode" />
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

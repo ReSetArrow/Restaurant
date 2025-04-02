@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Restaurant.Models.UserLogin>
+
+@{
+    ViewData["Title"] = "會員總覽";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Account)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birthday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManagerNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleCode)
+            </th>
+        
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManagerNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleCode)
+                </td>
+             
+            </tr>
+        }
+    </tbody>
+</table>

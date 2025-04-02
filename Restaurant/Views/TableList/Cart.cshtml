@@ -1,0 +1,127 @@
+﻿@{
+    ViewData["Title"] = "桌位訂單";
+    var user = Context.Items["UserLogin"] as UserLogin;
+    var userAccount = user?.Account; // 假設 UserLogin 物件有一個 Account 屬性
+}
+
+<h1 class="text-center text-primary bg-light p-3">@ViewData["Title"]</h1>
+
+<table id="myCart" class="table">
+    <thead>
+        <tr>
+            <th>序號</th>
+            <th>照片</th>
+            <th>桌位</th>
+            <th>數量</th>
+            <th>單價</th>
+            <th>小計</th>
+            <th>刪除</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+
+
+@section Scripts {
+    <script>
+        let getarrCart=[];
+        let userAccount = '@userAccount'; // 從 Razor 頁面傳遞使用者帳號到 JavaScript
+
+        //帶入key後取出localStorage的Item並轉換回陣列
+        getarrCart=JSON.parse( localStorage.getItem(userAccount+'_cart'));
+
+        // console.log(getarrCart);
+
+        //宣告一個變數，地區台灣，style:貨幣,TWD，小數後0碼
+        let toNTD = new Intl.NumberFormat('zh-TW', { style: 'currency', currency: 'TWD' ,minimumFractionDigits:0});
+
+        //判斷取出的陣列是否為空，不為空再進入table獲取完整
+        if(getarrCart == null || getarrCart.length === 0){
+            $('#myCart').html('<h2 class="text-center text-danger">目前的桌位不符合您的需求嗎?</h2>');
+            localStorage.removeItem(userAccount+'_cart'); // 清空localStorage中的cart項目，回到Index時才不會呼叫shadow1使購物車圖示閃爍
+
+        }
+        else{
+            //將判斷式內容解耦另外做成一個function
+             getCartList();
+        }
+
+        //原本在if/else判斷式中的獲取完整localStorage做成function
+        function getCartList(){
+              //宣告序號
+            let c=1
+            //宣告空字串用於帶入資料
+            let items="";
+            //宣告一個sum用於總金額
+            let sum=0;
+
+            //讀出陣列內的資料，並組合外觀
+            for(let item of getarrCart){
+                items+= `
+                <tr>
+                        <td>${c}</td>
+                        <td> <img src="/images/${item.Picture}" width="200"> </td>
+                        <td><h3>${item.Remark}</h3></td>
+                        <td><input type="number" min="1" class="form-control text-center" value="${item.Qty}" style="width:60px" oninput="updateQty(event,${c-1})" /></td>
+                        <td><h4 class="text-danger">NT  ${toNTD.format(item.Pricing)}</h4></td>
+                        <td><h4 class="text-danger">NT${toNTD.format(item.Qty*item.Pricing)}</h4></td>
+                        <td><button class="btn btn-outline-danger" onclick="delCartItem(${c-1})"><i class="bi bi-trash3-fill"></i></button></td>
+                </tr>
+                `
+
+                c++;
+                sum+=item.Qty*item.Pricing;
+        }
+            //最後再加上總計
+            items+=`
+             <tr>
+                <td colspan="7"  class="bg-light"><h3 class="text-dnager text-end">總額：NT${toNTD.format(sum)}</h3></td>
+            </tr>
+            <tr>
+                <td colspan="7"  class="bg-light">
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-success" type="button" href="/Orders/Create">結帳</a>
+                    </div>
+                </td>
+            </tr>
+            `
+
+            //DOM 操作，在<table>內加入id，並撰寫jQuery，將內容寫進tbody
+            $('#myCart>tbody').html(items);
+        }
+
+        function updateQty(evt,sn){
+            //1.把數量回寫localStorage
+            let newQty=evt.target.value;
+            //console.log(newQty);
+            //將輸入框獲取的字串轉型成數值後與帶入陣列中對應序號(c-1)的Qty欄位
+            getarrCart[sn].Qty=parseInt(newQty);
+            //更新localStorage
+            localStorage.setItem(userAccount+'_cart',JSON.stringify(getarrCart));
+
+            //2.介面小計欄位更新，使用原本判斷式localStorage解耦後的function完整更新
+            getCartList();
+        }
+
+        function delCartItem(sn){
+            //刪除行為前先讓使用者確認
+            if(confirm('確定要刪除此商品嗎？')) {
+                    //1.刪除localStorage中的資料
+                    getarrCart.splice(sn,1);
+                    //更新localStorage
+                    localStorage.setItem(userAccount+'_cart',JSON.stringify(getarrCart));
+                    //2.介面更新，使用原本判斷式localStorage解耦後的function完整更新
+                    getCartList();
+                    // 3.再次檢查陣列是否為空，並顯示購物車內無商品訊息
+                    if (getarrCart.length === 0) {
+                    $('#myCart').html('<h2 class="text-center text-danger">目前的桌位不符合您的需求嗎?</h2>');
+                    localStorage.removeItem(userAccount+'_cart'); // 清空localStorage中的cart項目，回到Index時才不會呼叫shadow1使購物車圖示閃爍
+                    }
+            }
+
+        }
+
+    </script>
+}

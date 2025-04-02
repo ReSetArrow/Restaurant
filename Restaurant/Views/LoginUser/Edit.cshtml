@@ -1,0 +1,118 @@
+﻿@model Restaurant.Models.UserLogin
+
+@{
+    ViewData["Title"] = "修改資料";
+    var user = Context.Items["UserLogin"] as UserLogin;
+}
+<style>
+    .form-group {
+        margin-bottom: 10px; 
+    }
+</style>
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<hr />
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card" style="border: none; ">
+                <div class="card-body">
+                    <form asp-action="Edit" id="editForm">
+                        <input type="hidden" asp-for="UserID" />
+
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+                            <label asp-for="Birthday" class="control-label"></label>
+                            <input asp-for="Birthday" class="form-control" />
+                            <span asp-validation-for="Birthday" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="control-label"></label>
+                            <input asp-for="PhoneNumber" class="form-control" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        
+                        <input type="hidden" asp-for="RoleCode" value="MB" />
+                        @if (user?.RoleCode != "MB")
+                        {
+                        <div class="form-group">
+                            <label asp-for="ManagerNumber" class="control-label"></label>
+                            <input asp-for="ManagerNumber" class="form-control" />
+                            <span asp-validation-for="ManagerNumber" class="text-danger"></span>
+                            <span class="text-danger" id="ManagerCheck">@ViewData["MGMessage"]</span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RoleCode" class="control-label"></label>
+                            <select asp-for="RoleCode" class="form-control" asp-items="ViewBag.RoleCode" value="會員"></select>
+                        </div>
+                        }
+                        <div class="text-center mt-4">
+                            <input type="submit" value="確定修改" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+             $('#ManagerNumber').on('change', function () {
+
+            //確認ManagerNumber欄位的next,並且class內有text-danger的text顯示為空(驗證器皆通過)
+            if ($('#ManagerNumber').next('.text-danger').text() == '') {
+
+                $('#ManagerCheck').html(`
+                    <div class="p-3">
+                        <div class="spinner-grow spinner-grow-sm" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        檢查ManagerNumber是否可用
+                        <div class="spinner-grow spinner-grow-sm" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                `);
+
+                $.ajax({
+                    url: `/LoginUser/CheckManager?managerNumber=` + $('#ManagerNumber').val(),
+                    type: 'get',
+                     success: function (data) {
+                        if (data) {
+                            // ManagerNumber 存在
+                            $('#ManagerCheck').text('OK,這個直接電死');
+                        } else {
+                            // ManagerNumber 不存在
+                            $('#ManagerCheck').text('不是個好主管');
+                            // 必須禁止 form submit
+                        }
+                    }
+                });
+            } else {
+                //清空紅字，使功能重製避免顯示、功能異常
+                $('#ManagerCheck').text('');
+            }
+        });
+
+        //將Form加上id=editForm
+        $('#editForm').on('submit', function (e) {
+            //如果有錯誤訊息也就是text-danger不是空值
+            if ($('#ManagerCheck').text() == '不是個好主管') {
+                //則禁止form submit
+                e.preventDefault();
+            }
+        });
+    </script>
+}

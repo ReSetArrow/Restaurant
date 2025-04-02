@@ -1,0 +1,134 @@
+﻿@model Restaurant.Models.UserLogin
+
+@{
+    ViewData["Title"] = "註冊會員";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="Register" id="registerForm">
+
+            <div class="form-group">
+                <label asp-for="Account" class="control-label"></label>
+                <input asp-for="Account" class="form-control" />
+                <span asp-validation-for="Account" class="text-danger"></span>
+                <span class="text-danger" id="AccountCheck">@ViewData["Message"]</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PasswordConfirm" class="control-label"></label>
+                <input asp-for="PasswordConfirm" class="form-control" />
+                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="ID" class="control-label"></label>
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthday" class="control-label"></label>
+                <input asp-for="Birthday" class="form-control" />
+                <span asp-validation-for="Birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="UserNumber" class="control-label"></label>
+                <input asp-for="UserNumber" class="form-control" />
+                <span asp-validation-for="UserNumber" class="text-danger"></span>
+            </div> *@
+
+            @* <div class="form-group">
+                <label asp-for="ManagerNumber" class="control-label"></label>
+                <input asp-for="ManagerNumber" class="form-control" />
+                <span asp-validation-for="ManagerNumber" class="text-danger"></span>
+            </div> *@
+
+            @*  <div class="form-group">
+                <label asp-for="RoleCode" class="control-label"></label>
+                <select asp-for="RoleCode" class ="form-control" asp-items="ViewBag.RoleCode"></select>
+            </div> *@
+
+            <div class="form-groupd-flex   m-5  justify-content-center row">
+                <input type="submit" value="確定註冊" class="btn btn-primary m-5" />
+            </div>
+            <input type="hidden" asp-for="RoleCode" value="MB" />
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        //撰寫判斷內容change或blur,後者較耗效能但非常及時,此處要與資料庫交換資料故不用input
+        $('#Account').on('change',function(){
+
+            //確認Account欄位的next,並且class內有text-danger的text顯示為空(驗證器皆通過)
+            if ($('#Account').next('.text-danger').text()=='' ) {
+
+                 $('#AccountCheck').html(`
+                       <div class="p-3">
+                            <div class="spinner-grow spinner-grow-sm" role="status">
+                               <span class="visually-hidden">Loading...</span>
+                            </div>
+                                檢查帳號是否可用
+                            <div class="spinner-grow spinner-grow-sm" role="status">
+                               <span class="visually-hidden">Loading...</span>
+                            </div>
+                       </div>
+                  `)
+
+                $.ajax({
+                    url: `/UserLogin/CheckAccount?account=`+$('#Account').val(),
+                    type: 'get',
+                    success: function (data) {
+                        if (data) {
+                            //帳號可用,於id="AccountCheck"
+                            $('#AccountCheck').text('帳號可用');
+
+                        }
+                        else {
+                            //帳號不可用
+                            $('#AccountCheck').text('帳號不可用');
+                            //必須禁止form submit
+                        }
+                    }
+                });
+             }
+             else{
+                 //清空紅字，使功能重製避免顯示、功能異常
+                 $('#AccountCheck').text('');
+             }
+        });
+
+        //將Form加上id=registerForm
+        $('#registerForm').on(function (e) {
+            //如果有錯誤訊息也就是text-danger不是空值
+            if ($('#AccountCheck').text() == '帳號不可用') {
+                //則禁止form submit
+                e.preventDefault();
+            }
+        });
+    </script>
+}

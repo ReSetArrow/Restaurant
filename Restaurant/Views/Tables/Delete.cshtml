@@ -1,0 +1,59 @@
+﻿@model Restaurant.Models.Table
+@{
+    ViewData["Title"] = "刪除桌位";
+}
+
+<div class="text-end">
+    <a asp-action="Index" class="btn btn-primary">
+        <i class="bi bi-house-door-fill"></i>  桌位首頁
+    </a>
+</div>
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<hr />
+<div class="container ">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+
+            <h2 class="text-center">
+                <div class="alert-danger">@Html.DisplayNameFor(model => model.TableID)</div>
+                <div>  @Html.DisplayFor(model => model.TableID)</div>
+
+
+            </h2>
+            <hr />
+            <h2 class="text-center">
+                <div class="alert-danger">@Html.DisplayNameFor(model => model.Remark)</div>
+                <div>@Html.DisplayFor(model => model.Remark)</div>
+
+
+            </h2>
+            <h2 class="text-center">
+                <div class="alert-danger">@Html.DisplayNameFor(model => model.Limit)</div>
+                <div>@Html.DisplayFor(model => model.Limit)</div>
+
+
+            </h2>
+            <h2 class="text-center">
+                <div class="alert-danger">@Html.DisplayNameFor(model => model.Pricing)</div>
+                <div>@Html.DisplayFor(model => model.Pricing)</div>
+
+            </h2>
+
+            <hr />
+            <img src="/images/@(Html.DisplayFor(model => model.TableID)).jpg" class="d-block mx-auto" alt="Warning" />
+
+            <hr />
+            <div class="form-group text-center mt-4">
+                <form asp-action="Delete" onsubmit="return confirm('刪除後無法復原，你確定(◜◔。◔◝)?');">
+                    <input type="hidden" asp-for="TableID" />
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash"></i> Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

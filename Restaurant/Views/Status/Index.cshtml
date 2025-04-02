@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Restaurant.Models.Status>
+
+@{
+    ViewData["Title"] = "訂單狀態";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+@* 成功新增、刪除、修改的訊息 *@
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="successMessage" class="alert alert-success text-center" style="display:none;">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<p class="text-end">
+    <a asp-action="Create" class="btn btn-primary btn-lg"><i class="bi bi-journal-bookmark"></i>  新增訂單狀態</a>
+</p>
+
+@foreach (var item in Model)
+{
+    <div class="row justify-content-center">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.StatusCode)</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.StatusCategory)</h6>
+
+                <div class="d-flex justify-content-end">
+                    <a asp-action="Edit" asp-route-id="@item.StatusCode" class="btn btn-warning me-2"><i class="bi bi-wrench-adjustable-circle"></i> 編輯</a>
+                    <a asp-action="Details" asp-route-id="@item.StatusCode" class="btn btn-info me-2"><i class="bi bi-zoom-in"></i> 詳細</a>
+                    <a asp-action="Delete" asp-route-id="@item.StatusCode" class="btn btn-danger"><i class="bi bi-trash"></i> 刪除</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+                alert(successMessage.textContent.trim());
+            }
+        });
+    </script>
+}

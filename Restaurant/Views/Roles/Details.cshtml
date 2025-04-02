@@ -1,0 +1,35 @@
+﻿@model Restaurant.Models.Role
+
+@{
+    ViewData["Title"] = "職位內容";
+}
+<div class="text-end">
+    <a asp-action="Index" class="btn btn-primary">
+        <i class="bi bi-house-door-fill"></i> 職位首頁
+    </a>
+</div>
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<hr />
+<div>
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="text-center">
+                    <h2 class="alert-danger"> @Html.DisplayNameFor(model => model.Title)</h2>
+                    <div>@Html.DisplayFor(model => model.Title)</div>
+                    @if (Model.Supervisor)
+                    {
+                        <div>@Html.DisplayNameFor(model => model.Supervisor)</div>
+                    }
+                </div>
+                
+                <hr />
+                <div class="form-group text-center mt-4">
+                    <a asp-action="Edit" asp-route-id="@Model?.RoleCode" class="btn btn-primary w-100">修改</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

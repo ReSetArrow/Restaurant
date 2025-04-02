@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Restaurant.Models.Table>
+
+@{
+    ViewData["Title"] = "桌位";
+}
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+
+@* 成功新增、刪除、修改的訊息 *@
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="successMessage" class="alert alert-success text-center" style="display:none;">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+
+<p class="text-end">
+    <a asp-action="Create" class="btn btn-primary btn-lg"><i class="bi bi-shop"></i>  新增桌位</a>
+</p>
+<div class="row">
+@foreach (var item in Model)
+{
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+            <div class="card bg-light h-100">
+                <div class="card-img-top" style="height: 200px; background-size: cover; background-position: center; background-image: url('/images/@(item.TableID).jpg');"></div>
+
+            <div class="card-body">
+                <h4 style="font-size: 1.2em; color: #7367f0;">@Html.DisplayNameFor(modelItem => item.TableID)</h4>
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.TableID)</h5>
+                    
+                <p class="card-text">
+                        <strong>@Html.DisplayNameFor(modelItem => item.Remark):</strong> @Html.DisplayFor(modelItem => item.Remark)<br>
+                    <strong>@Html.DisplayNameFor(modelItem => item.Limit):</strong> @Html.DisplayFor(modelItem => item.Limit)<br>
+                        <strong>@Html.DisplayNameFor(modelItem => item.Pricing)  <i class="bi bi-cash" style="color:#F2C078"></i>  :  </strong> @Html.DisplayFor(modelItem => item.Pricing)
+                </p>
+                @* <p class="card-text"><small>Last updated 3 mins ago</small></p> *@
+                <div class="d-flex justify-content-center">
+                    <a asp-action="Delete" asp-route-id="@item.TableID" class="btn btn-danger"><i class="bi bi-trash"></i> 刪除</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+</div>
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+                alert(successMessage.textContent.trim());
+            }
+        });
+    </script>
+}

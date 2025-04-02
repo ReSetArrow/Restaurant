@@ -1,0 +1,144 @@
+﻿@model IEnumerable<Restaurant.Models.Order>
+
+@{
+    ViewData["Title"] = "訂單管理";
+    var user = Context.Items["UserLogin"] as UserLogin;
+    string userAccount = user.Account; 
+}
+
+<h1 class="text-center">@ViewData["Title"] </h1>
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+    @foreach (var item in Model)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+            <button class="accordion-button bg-gradient" type="button" data-bs-toggle="collapse" data-bs-target="#@item.OrderNumber">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(modelItem => item.OrderNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OrderNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(modelItem => item.ExpectedArrivalDate)
+                                    </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ExpectedArrivalDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(modelItem => item.PaymentCodeNavigation.PaymentType)
+                                    </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaymentCodeNavigation.PaymentType)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(modelItem => item.StatusCodeNavigation.StatusCategory)
+                                    </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StatusCodeNavigation.StatusCategory)
+                                </td>
+                                <td>
+                                    @Html.DisplayNameFor(modelItem => item.Total)
+                                    </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Total)
+                                </td>
+
+                                @* 訂單總額 *@
+                                <td>
+                                    @Html.DisplayNameFor(modelItem => item.UserNumberNavigation.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserNumberNavigation.Name)
+                                </td>
+                        </tbody>
+                    </table>
+            </button>
+        </h2>
+        <div id="@item.OrderNumber" class="accordion-collapse collapse" >
+            <div class="accordion-body">
+                @* OrderDetails *@
+                @await Component.InvokeAsync("VCGetOrderDetailByOrderID", new { id = item.OrderNumber })
+            </div>
+        </div>
+    </div>
+    }
+</div>@* 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentCodeNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusCodeNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserNumberNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderNumber)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentCodeNavigation.PaymentCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusCodeNavigation.StatusCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserNumberNavigation.Name)
+            </td>
+        </tr>
+
+
+} *@
+
+<div class="toast-container position-fixed bottom-0 end-0  p-3">
+    <div id="addNewOrderToast" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body fs-5"></div>
+              </div>
+    </div>
+</div>
+@section Scripts {
+
+    @if (TempData["Message"] != null)
+    {
+        //訂單成功時會產生上面的TempData，此時判斷是否為空值(所以內容無所謂)，成功="OK""=執行把Cart訂單清空
+        <script>
+
+            const userAccount = '@userAccount';
+            const toastLiveExample = document.getElementById('addNewOrderToast')
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(addNewOrderToast)
+
+            localStorage.removeItem("cart");
+            localStorage.removeItem(userAccount +"_cart");
+            $('#addNewOrderToast .toast-body').html("訂單已新增成功<i class='bi bi-balloon-heart'></i>");
+
+            toastBootstrap.show()
+          </script>
+    }
+}

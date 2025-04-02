@@ -1,0 +1,169 @@
+﻿@model Restaurant.Models.Order
+
+@{
+    ViewData["Title"] = "結帳";
+    var user = Context.Items["UserLogin"] as UserLogin;
+    string userAccount = user.Account; // 確保 userAccount 正確設置
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<hr />
+<div class="row justify-content-center">
+    <div class=" col-10 col-xl-6 ">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row form-group">
+                <input type="hidden" asp-for="ExpectedArrivalDate" id="ExpectedArrivalDate" />
+                <label asp-for="ExpectedArrivalDate" class="control-label">
+                    @Html.DisplayNameFor(model => model.ExpectedArrivalDate)
+                    <div class="d-flex align-items-center">
+                        <select id="Year" name="Year" class="form-control mx-2 ">
+                            @for (int year = DateTime.Now.Year; year <= DateTime.Now.Year + 5; year++)
+                            {
+                                <option value="@year">@year</option>
+                            }
+                        </select>
+                        <span class="mx-1">年</span>
+                        <select id="Month" name="Month" class="form-control mx-2 ">
+                            @for (int month = 1; month <= 12; month++)
+                            {
+                                <option value="@month">@month</option>
+                            }
+                        </select>
+                        <span class="mx-1">月</span>
+
+                        <select id="Day" name="Day" class="form-control mx-2">
+                            @for (int day = 1; day <= 31; day++)
+                            {
+                                <option value="@day">@day</option>
+                            }
+                        </select>
+                        <span class="mx-1">日</span>
+
+                        <select id="Hour" name="Hour" class="form-control mx-2">
+                            @for (int hour = 10; hour <= 22; hour++)
+                            {
+                                <option value="@hour">@hour</option>
+                            }
+                        </select>
+                        <span class="mx-1">時</span>
+
+                        <select id="Minute" name="Minute" class="form-control mx-1">
+                            <option value="00">00</option>
+                            <option value="15">15</option>
+                            <option value="30">30</option>
+                            <option value="45">45</option>
+                        </select>
+                        <span class="mx-1">分</span>
+
+                    </div>
+                </label>
+
+                <input type="hidden" asp-for="StatusCode" value="od" />
+            </div>
+
+            <div class="form-group justify-content-center">
+                <label class="control-label">付款方式</label>
+                <select asp-for="PaymentCode" class="form-control" asp-items="ViewBag.PaymentCode"></select>
+            </div>
+
+
+
+            @* 將下訂單的資料載入但隱藏不顯示 *@
+            <input type="hidden" name="Cart" id="Cart" />
+            <div class="row justify-content-center m-2">
+                <input type="submit" value="確認下訂" class="btn btn-primary m-2" />
+                <a asp-controller="TableList" asp-action="Index" class="btn btn-outline-primary " role="button">繼續加碼</a>
+
+            </div>
+        </form>
+
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        //<input type="hidden" name="Cart" id="Cart" />的內容為cart[]的所有資料
+        // localStorage.getItem('cart',JSON.stringify(arrCart));
+        // $('#Cart').val(localStorage.getItem('cart'));
+
+        const userAccount = '@userAccount';
+
+        const cartKey = userAccount + '_cart';
+
+        $('#Cart').val(localStorage.getItem(cartKey));
+
+        // let thisCart = [];
+
+        // function updateCart(userAccount) {
+        //     // 檢查 userAccount 是否正確設置
+        //     console.log("userAccount:", userAccount);
+
+        //     // 取得 localStorage 中的值
+        //     let cartData = localStorage.getItem(userAccount + '_cart');
+        //     console.log("cartData from localStorage:", cartData);
+
+        //     // 檢查 cartData 是否存在且為有效的 JSON 字符串
+        //     if (cartData) {
+        //         try {
+        //             thisCart = JSON.parse(cartData);
+        //             console.log("Parsed thisCart:", thisCart);
+        //         } catch (e) {
+        //             console.error("Error parsing cartData:", e);
+        //         }
+        //     } else {
+        //         console.log("No cartData found for userAccount:", userAccount);
+        //     }
+
+        //     // 將 thisCart 存儲到另一個 localStorage 鍵中，並將其鍵設置為 'cart'
+        //     localStorage.setItem('cart', JSON.stringify(thisCart));
+
+        //     // 將 cartValue 設置到 id="Cart" 的元素中
+        //     $('#Cart').val(localStorage.getItem('cart'));
+        // }
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+           $(document).ready(function() {
+            // var userAccount = '@Html.Raw(userAccount)';
+            // updateCart(userAccount);
+
+            document.querySelector('form').addEventListener('submit', function () {
+                var year = document.getElementById('Year').value;
+                var month = document.getElementById('Month').value.padStart(2, '0');
+                var day = document.getElementById('Day').value.padStart(2, '0');
+                var hour = document.getElementById('Hour').value.padStart(2, '0');
+                var minute = document.getElementById('Minute').value.padStart(2, '0');
+                var expectedArrivalDate = `${year}${month}${day}${hour}${minute}`;
+                document.getElementById('ExpectedArrivalDate').value = expectedArrivalDate;
+            });
+
+            function updateDays() {
+                var year = parseInt(document.getElementById('Year').value);
+                var month = parseInt(document.getElementById('Month').value);
+                var daySelect = document.getElementById('Day');
+                var daysInMonth = new Date(year, month, 0).getDate();
+
+                daySelect.innerHTML = '';
+                for (var day = 1; day <= daysInMonth; day++) {
+                    var option = document.createElement('option');
+                    option.value = day;
+                    option.text = day;
+                    daySelect.appendChild(option);
+                }
+            }
+
+            document.getElementById('Year').addEventListener('change', updateDays);
+            document.getElementById('Month').addEventListener('change', updateDays);
+            document.addEventListener('DOMContentLoaded', updateDays);
+        });
+    </script>
+
+}

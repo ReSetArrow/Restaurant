@@ -1,0 +1,49 @@
+﻿@model Restaurant.Models.Role
+
+@{
+    ViewData["Title"] = "編輯職位";
+}
+<div class="text-end">
+    <a asp-action="Index" class="btn btn-primary">
+        <i class="bi bi-house-door-fill"></i> 職位首頁
+    </a>
+</div>
+<h1 class="text-center">@ViewData["Title"]：@Html.DisplayFor(Model => Model.RoleCode)</h1>
+
+<hr />
+<div class="container ">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <form asp-action="Edit" onsubmit="return confirm('請再三確認有無主管職權(ಠ益ಠ) ');">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="RoleCode" />
+                <div class="form-group">
+                    <h2 class="text-center">
+                        <label asp-for="Title" class="control-label"></label>
+                    </h2>
+                    <div>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                        <br />
+                        <div>
+                            <input asp-for="Supervisor" class="form-check-input" type="checkbox" />
+                            <label asp-for="Supervisor" class="form-check-label"></label>
+                            <span asp-validation-for="Supervisor" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <input type="submit" value="確認修改" class="btn btn-primary w-100" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

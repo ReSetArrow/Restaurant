@@ -1,0 +1,28 @@
+﻿@model Restaurant.Models.Status
+
+@{
+    ViewData["Title"] = "訂單狀態一覽";
+}
+<div class="text-end">
+    <a asp-action="Index" class="btn btn-primary">
+        <i class="bi bi-house-door-fill"></i> 付款方式首頁
+    </a>
+</div>
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<hr />
+<div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <h2 class="alert-danger"> @Html.DisplayNameFor(model => model.StatusCategory)</h2>
+                <div>@Html.DisplayFor(model => model.StatusCategory)</div>
+
+                <hr />
+                <div class="form-group text-black align-content-center mt-4">
+                    <a asp-action="Edit" asp-route-id="@Model?.StatusCode" class="btn btn-primary w-100">修改</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
